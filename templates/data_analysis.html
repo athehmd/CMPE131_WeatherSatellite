@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Analysis</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+
+    form {
+      display: inline-block;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    input {
+      padding: 8px;
+      font-size: 16px;
+      width: 200px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    .data-container {
+      margin-top: 20px;
+    }
+
+    .button-container {
+      margin-top: 20px;
+    }
+
+    .back-button {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4CAF50; /* Green color */
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .back-button:hover {
+      background-color: #45a049; /* Darker green color on hover */
+    }
+
+    .result-container {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Data Analysis</h1>
+
+  <form action="{{ url_for('data_analysis') }}" method="post">
+    <label for="name">Enter Data Name:</label>
+    <input type="text" id="name" name="name" required>
+    <button type="submit">Perform Analysis</button>
+  </form>
+
+  <div class="result-container">
+    {% if analysis_result %}
+      <h2>Analysis Result for {{ name }}</h2>
+      <p>Average: {{ analysis_result.average }}</p>
+      <p>Standard Deviation: {{ analysis_result.standard_deviation }}</p>
+      <p>High: {{ analysis_result.high }}</p>
+      <p>Low: {{ analysis_result.low }}</p>
+    {% endif %}
+  </div>
+
+  <!-- Add the button container and back button -->
+  <div class="button-container">
+    <a href="{{ url_for('index') }}" class="back-button">Back to Homepage</a>
+  </div>
+
+</body>
+</html>

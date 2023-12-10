@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transmit Data</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+
+    form {
+      display: inline-block;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    input {
+      padding: 8px;
+      font-size: 16px;
+      width: 200px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    .data-container {
+      margin-top: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+    /* Add this CSS to make the button prettier */
+    .button-container {
+      margin-top: 20px;
+    }
+
+    .back-button {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4CAF50; /* Green color */
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .back-button:hover {
+      background-color: #45a049; /* Darker green color on hover */
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Transmit Data</h1>
+
+  <form action="{{ url_for('transmit_data') }}" method="post">
+    <label for="name">Enter Name:</label>
+    <input type="text" id="name" name="name" required>
+    <button type="submit">Fetch Data</button>
+  </form>
+
+  <div class="data-container">
+    {% if data %}
+      <h2>Data for {{ name }}</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Data</th>
+            <th>Author</th>
+            <th>Timestamp</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ data.data }}</td>
+            <td>{{ data.author }}</td>
+            <td>{{ data.date.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+          </tr>
+        </tbody>
+      </table>
+    {% endif %}
+  </div>
+
+  <!-- Add the button container and back button -->
+  <div class="button-container">
+    <a href="{{ url_for('index') }}" class="back-button">Back to Homepage</a>
+  </div>
+</body>
+</html>

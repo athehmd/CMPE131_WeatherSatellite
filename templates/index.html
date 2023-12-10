@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Management Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Data Management</h1>
+
+  <form action="{{ url_for('collect_data') }}" method="get">
+    <button type="submit">Collect Data</button>
+  </form>
+
+  <form action="{{ url_for('data_storage') }}" method="get">
+    <button type="submit">Data Storage</button>
+  </form>
+
+  <form action="{{ url_for('transmit_data') }}" method="get">
+    <button type="submit">Transmit Data</button>
+  </form>
+
+  <form action="{{ url_for('data_analysis') }}" method="get">
+    <button type="submit">Data Analysis</button>
+  </form>
+
+</body>
+</html>
