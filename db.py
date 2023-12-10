@@ -8,7 +8,7 @@ import os
 try:
     mydb = mariadb.connect(
         user="root",
-        password="78687",
+        password="YourPassword",
         host="127.0.0.1",
         port=3306,
         database="Weather_Satellite"
