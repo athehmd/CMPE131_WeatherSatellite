@@ -1,4 +1,5 @@
 mariadb
 pytest
+requests
 flask==3.0.0
 virtualenv==20.25.0
