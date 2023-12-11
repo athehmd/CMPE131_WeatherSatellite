@@ -1,7 +1,12 @@
 import pytest
+import os
 from app import app, perform_data_analysis, fetch_data_by_name
 from db import get_db
 import statistics
+
+report_directory = r'C:\Users\athi1\.jenkins\workspace\WeatherStationBuildAndTest\test-reports'
+os.makedirs(report_directory, exist_ok=True)
+xml_report_path = os.path.join(report_directory, 'test_report.xml')
 
 @pytest.fixture
 def client():
@@ -84,4 +89,4 @@ def test_perform_data_analysis():
     assert analysis_result is not None  # Adjust based on your expected behavior
 
 if __name__ == '__main__':
-    pytest.main(['-o', 'junit_family=xunit2', '--junit-xml=test_report.xml'])
+    pytest.main(['-o', 'junit_family=xunit2', '--junit-xml', xml_report_path])
