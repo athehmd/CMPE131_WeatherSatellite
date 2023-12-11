@@ -1,5 +1,4 @@
 bcrypt==4.0.1
 mariadb==1.1.8
 flask==3.0.0
-nodejs==20.10.0
 virtualenv==20.25.0
